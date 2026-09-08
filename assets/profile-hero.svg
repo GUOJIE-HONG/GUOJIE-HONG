@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
+  <title id="title">Jacob Hong — Give me more power.</title>
+  <desc id="desc">Purple and cyan neon banner with an orbital power core and perspective grid. .NET, Architecture, Agentic Coding.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1"><stop stop-color="#090b20"/><stop offset=".55" stop-color="#171032"/><stop offset="1" stop-color="#080e24"/></linearGradient>
+    <linearGradient id="neon"><stop stop-color="#35e8ff"/><stop offset=".5" stop-color="#8d7bff"/><stop offset="1" stop-color="#f16aff"/></linearGradient>
+    <radialGradient id="aura"><stop stop-color="#7951ff" stop-opacity=".4"/><stop offset="1" stop-color="#7951ff" stop-opacity="0"/></radialGradient>
+    <pattern id="scanlines" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0H8" stroke="#aaa0ff" stroke-opacity=".035"/></pattern>
+  </defs>
+  <rect width="1200" height="440" rx="18" fill="url(#background)"/>
+  <rect width="1200" height="440" rx="18" fill="url(#scanlines)"/>
+  <ellipse cx="946" cy="213" rx="250" ry="215" fill="url(#aura)"/>
+  <g fill="none" stroke="#7964df" stroke-opacity=".19">
+    <path d="M0 340H1200M0 370H1200M0 410H1200M600 302L50 440M660 302L310 440M720 302L570 440M780 302L830 440M840 302L1090 440M900 302L1200 405"/>
+    <path d="M760 0V48L815 103H1200M1050 0V42L1090 82H1200M0 289H36L56 309H365"/>
+  </g>
+  <path d="M28 73V28H106M1094 28H1172V73M28 367V412H106M1094 412H1172V367" fill="none" stroke="url(#neon)" stroke-width="2"/>
+  <path d="M64 91H98" stroke="#35e8ff" stroke-width="3"/>
+  <g font-family="'Segoe UI', Arial, sans-serif">
+    <text x="113" y="97" fill="#a9b0d5" font-size="16" letter-spacing="4">DEVELOPER PROFILE / 01</text>
+    <text x="65" y="203" fill="#35e8ff" opacity=".45" font-size="78" font-weight="800" letter-spacing="-3">JACOB HONG</text>
+    <text x="61" y="199" fill="#f5f3ff" font-size="78" font-weight="800" letter-spacing="-3">JACOB HONG</text>
+    <rect x="65" y="217" width="98" height="4" fill="url(#neon)"/>
+    <text x="64" y="270" fill="#d8ceff" font-size="27" letter-spacing="1">Give me more power.</text>
+    <g font-size="15" font-family="Consolas, 'Courier New', monospace" letter-spacing="1">
+      <text x="64" y="355" fill="#67eaff">.NET</text>
+      <text x="122" y="355" fill="#6b628f">/</text>
+      <text x="146" y="355" fill="#c0afff">ARCHITECTURE</text>
+      <text x="275" y="355" fill="#6b628f">/</text>
+      <text x="299" y="355" fill="#eaa0ff">AGENTIC CODING</text>
+    </g>
+  </g>
+  <g transform="translate(956 214)" fill="none">
+    <circle r="135" stroke="#6c56a9" stroke-opacity=".35"/>
+    <circle r="117" stroke="#a677ff" stroke-width="2" stroke-dasharray="160 32 22 32 90 32" transform="rotate(-35)"/>
+    <circle r="100" stroke="#35e8ff" stroke-opacity=".7" stroke-dasharray="2 12"/>
+    <path d="M-148 0H-125M125 0H148M0-148V-125M0 125V148" stroke="#67eaff" stroke-width="2"/>
+    <path d="M0-81L70-40V40L0 81L-70 40V-40Z" fill="#151332" stroke="url(#neon)" stroke-width="2"/>
+    <path d="M9-52L-32 8H-3L-12 53L34-13H4Z" fill="url(#neon)" stroke="#c2beff" stroke-width="1"/>
+    <circle cx="-96" cy="-67" r="5" fill="#61eaff"/>
+    <circle cx="99" cy="63" r="4" fill="#ed8aff"/>
+  </g>
+  <text x="956" y="393" text-anchor="middle" fill="#aaa0cc" font-family="Consolas, 'Courier New', monospace" font-size="12" letter-spacing="3">BUILD / LEARN / LEVEL UP</text>
+</svg>
