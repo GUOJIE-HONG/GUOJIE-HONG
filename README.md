@@ -37,14 +37,6 @@
 
 <br>
 
-### `03 / THE WORKSHOP`
-
-#### [skills ↗](https://github.com/GUOJIE526/skills)
-
-持續隨著學習與實作擴增的 skills 專案。
-
-<br>
-
 ---
 
 <div align="center">
