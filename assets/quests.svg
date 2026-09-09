@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="200" viewBox="0 0 1200 200" role="img" aria-label="Skill tree: Clean Architecture, DDD, Spec-Driven, Agentic Coding" shape-rendering="crispEdges">
+  <rect width="1200" height="200" fill="#1a1033"/>
+  <rect x="10" y="10" width="1180" height="180" fill="none" stroke="#f8f8f2" stroke-width="4"/>
+  <g stroke="#7c5cff" stroke-width="4" stroke-dasharray="12 8">
+    <line x1="240" y1="100" x2="360" y2="100"/><line x1="520" y1="100" x2="640" y2="100"/><line x1="800" y1="100" x2="920" y2="100"/>
+  </g>
+  <g font-family="'Courier New',Consolas,monospace" font-weight="bold" text-anchor="middle" font-size="14" letter-spacing="2">
+    <g transform="translate(80 52)">
+      <rect width="160" height="96" fill="#0f0a22" stroke="#ffd23f" stroke-width="4"/>
+      <text x="80" y="42" fill="#ffd23f">CLEAN</text><text x="80" y="64" fill="#ffd23f">ARCH</text>
+      <text x="80" y="86" fill="#b9a8e6" font-size="10">SKILL 1/4</text>
+    </g>
+    <g transform="translate(360 52)">
+      <rect width="160" height="96" fill="#0f0a22" stroke="#4dd9ff" stroke-width="4"/>
+      <text x="80" y="42" fill="#4dd9ff">DOMAIN</text><text x="80" y="64" fill="#4dd9ff">DRIVEN</text>
+      <text x="80" y="86" fill="#b9a8e6" font-size="10">SKILL 2/4</text>
+    </g>
+    <g transform="translate(640 52)">
+      <rect width="160" height="96" fill="#0f0a22" stroke="#ff4d6d" stroke-width="4"/>
+      <text x="80" y="42" fill="#ff4d6d">SPEC</text><text x="80" y="64" fill="#ff4d6d">DRIVEN</text>
+      <text x="80" y="86" fill="#b9a8e6" font-size="10">SKILL 3/4</text>
+    </g>
+    <g transform="translate(920 52)">
+      <rect width="160" height="96" fill="#0f0a22" stroke="#7c5cff" stroke-width="4"/>
+      <text x="80" y="42" fill="#c9b8ff">AGENTIC</text><text x="80" y="64" fill="#c9b8ff">CODING</text>
+      <text x="80" y="86" fill="#b9a8e6" font-size="10">SKILL 4/4</text>
+    </g>
+    <rect x="1096" y="90" width="20" height="20" fill="#ffd23f"><animate attributeName="opacity" values="1;0;1" dur="1.2s" calcMode="discrete" repeatCount="indefinite"/></rect>
+  </g>
+</svg>
