@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-26T17:07:14Z",
+  "title": "Design System: GUOJIE-HONG",
+  "extensions": {
+    "colorMeta": {
+      "international-orange": {
+        "role": "primary",
+        "displayName": "International Orange",
+        "canonical": "#ff4f00",
+        "tonalRamp": ["oklch(15% 0.222 37.4)", "oklch(26% 0.222 37.4)", "oklch(38% 0.222 37.4)", "oklch(49% 0.222 37.4)", "oklch(61% 0.222 37.4)", "oklch(72% 0.222 37.4)", "oklch(84% 0.222 37.4)", "oklch(95% 0.222 37.4)"]
+      },
+      "on-orange": {
+        "role": "primary",
+        "displayName": "Field Ink",
+        "canonical": "#111111",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(26% 0 0)", "oklch(38% 0 0)", "oklch(49% 0 0)", "oklch(61% 0 0)", "oklch(72% 0 0)", "oklch(84% 0 0)", "oklch(95% 0 0)"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Poster Black",
+        "canonical": "#111111",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(26% 0 0)", "oklch(38% 0 0)", "oklch(49% 0 0)", "oklch(61% 0 0)", "oklch(72% 0 0)", "oklch(84% 0 0)", "oklch(95% 0 0)"]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#595959",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(26% 0 0)", "oklch(38% 0 0)", "oklch(49% 0 0)", "oklch(61% 0 0)", "oklch(72% 0 0)", "oklch(84% 0 0)", "oklch(95% 0 0)"]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["oklch(15% 0.005 247.9)", "oklch(26% 0.005 247.9)", "oklch(38% 0.005 247.9)", "oklch(49% 0.005 247.9)", "oklch(61% 0.005 247.9)", "oklch(72% 0.005 247.9)", "oklch(84% 0.005 247.9)", "oklch(95% 0.005 247.9)"]
+      },
+      "ink-secondary-dark": {
+        "role": "neutral",
+        "displayName": "Slate",
+        "canonical": "#9ba4ad",
+        "tonalRamp": ["oklch(15% 0.017 248.1)", "oklch(26% 0.017 248.1)", "oklch(38% 0.017 248.1)", "oklch(49% 0.017 248.1)", "oklch(61% 0.017 248.1)", "oklch(72% 0.017 248.1)", "oklch(84% 0.017 248.1)", "oklch(95% 0.017 248.1)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The name, on two lines, in the hero only. Archivo ExtraBold outlined to paths." },
+      "product": { "displayName": "Product", "purpose": "`skills` inside the orange field." },
+      "headline-hero": { "displayName": "Headline, hero", "purpose": "The Chinese role line 後端工程師 at the bottom left of the hero." },
+      "headline": { "displayName": "Headline", "purpose": "The Chinese title of every section heading." },
+      "title": { "displayName": "Title", "purpose": "The field statement \"Evidence, / never guesswork.\" and, in secondary ink, \"C# / ASP.NET Core\"." },
+      "label": { "displayName": "Label", "purpose": "The English translation in spaced caps beneath each Chinese headline, BACKEND ENGINEER included. 36 units is the floor for all SVG text." }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "field-open",
+        "value": "@keyframes { from { transform: scaleX(.06) } } 1.2s cubic-bezier(.16,1,.3,1) both; transform-box: fill-box; transform-origin: 0 0",
+        "purpose": "The one moment: the hero field opens once from its left edge when the image loads. It is off under prefers-reduced-motion: reduce, and the field is never invisible at any frame."
+      }
+    ],
+    "breakpoints": []
+  },
+  "components": [
+    {
+      "name": "Hero Poster",
+      "kind": "custom",
+      "refersTo": "hero-field",
+      "description": "The signature piece: the name at poster scale, the orange field reserved for skills, and the role block at bottom left on shared baselines. It ships as outlined SVG. This HTML is a proportional stand-in where 1 canvas unit is 0.1cqw.",
+      "html": "<div class=\"ds-hero\"><div class=\"ds-hero-canvas\"><div class=\"ds-hero-field\"></div><div class=\"ds-hero-name\">Jacob<br>Hong</div><div class=\"ds-hero-role\"><span class=\"ds-hero-zh\">後端工程師</span><span class=\"ds-hero-label\">BACKEND ENGINEER</span><span class=\"ds-hero-stack\">C# / ASP.NET Core</span></div><div class=\"ds-hero-product\"><span class=\"ds-hero-skills\">skills</span><span class=\"ds-hero-statement\">Evidence,<br>never guesswork.</span></div></div></div>",
+      "css": ".ds-hero { container-type: inline-size; width: 100%; } .ds-hero-canvas { position: relative; height: 76cqw; overflow: hidden; color: #111111; font-family: Archivo, sans-serif; } .ds-hero-field { position: absolute; left: 51.2cqw; top: 23.8cqw; right: 0; bottom: 0; background: #ff4f00; transform-origin: 0 0; animation: ds-hero-open 1.2s cubic-bezier(.16,1,.3,1) both; } @keyframes ds-hero-open { from { transform: scaleX(.06); } } .ds-hero-name { position: absolute; left: 0; top: -1.4cqw; font-weight: 800; font-size: 26.2cqw; line-height: .84; letter-spacing: -.035em; } .ds-hero-role { position: absolute; left: 0; top: 52cqw; display: flex; flex-direction: column; } .ds-hero-zh { font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 7.6cqw; line-height: 1; letter-spacing: .02em; } .ds-hero-label { margin-top: 2.4cqw; font-weight: 500; font-size: 3.6cqw; line-height: 1; letter-spacing: .14em; color: #595959; } .ds-hero-stack { margin-top: 1.2cqw; font-weight: 500; font-size: 4.4cqw; line-height: 1; color: #595959; } .ds-hero-product { position: absolute; left: 55.2cqw; top: 49.6cqw; display: flex; flex-direction: column; color: #111111; } .ds-hero-skills { font-weight: 800; font-size: 12.4cqw; line-height: 1; letter-spacing: -.02em; } .ds-hero-statement { margin-top: 1cqw; font-weight: 500; font-size: 4.4cqw; line-height: 5.2cqw; } @media (prefers-color-scheme: dark) { .ds-hero-canvas { color: #ffffff; } .ds-hero-label, .ds-hero-stack { color: #9ba4ad; } .ds-hero-product { color: #111111; } } @media (prefers-reduced-motion: reduce) { .ds-hero-field { animation: none; } }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "section-rule",
+      "description": "A 10-unit rule in primary ink, the Chinese headline, and its English translation beneath. It ships as a 1000 × 157 SVG inside an <h2>. GitHub strips CSS, so it has no hover or focus states of its own.",
+      "html": "<div class=\"ds-heading\"><div class=\"ds-heading-rule\"></div><div class=\"ds-heading-zh\">技術</div><div class=\"ds-heading-label\">STACK</div></div>",
+      "css": ".ds-heading { container-type: inline-size; width: 100%; color: #111111; } .ds-heading-rule { height: 1cqw; background: #111111; } .ds-heading-zh { margin-top: 3cqw; font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 6.4cqw; line-height: 1; letter-spacing: .02em; } .ds-heading-label { margin-top: 2.2cqw; padding-bottom: 1.4cqw; font-family: Archivo, sans-serif; font-weight: 500; font-size: 3.6cqw; line-height: 1; letter-spacing: .14em; color: #595959; } @media (prefers-color-scheme: dark) { .ds-heading { color: #ffffff; } .ds-heading-rule { background: #ffffff; } .ds-heading-label { color: #9ba4ad; } }"
+    },
+    {
+      "name": "Section Heading, skills",
+      "kind": "custom",
+      "refersTo": "section-rule-skills",
+      "description": "The only heading with an International Orange rule, the same in both themes. It is wrapped in a link to the skills repo, and the link sits inside the <h2>.",
+      "html": "<a class=\"ds-hs-link\" href=\"https://github.com/GUOJIE-HONG/skills\"><div class=\"ds-hs\"><div class=\"ds-hs-rule\"></div><div class=\"ds-hs-zh\">開發流程工具</div><div class=\"ds-hs-label\">SKILLS FOR CODING AGENTS</div></div></a>",
+      "css": ".ds-hs-link { display: block; color: inherit; text-decoration: none; } .ds-hs { container-type: inline-size; width: 100%; color: #111111; } .ds-hs-rule { height: 1cqw; background: #ff4f00; } .ds-hs-zh { margin-top: 3cqw; font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 6.4cqw; line-height: 1; letter-spacing: .02em; } .ds-hs-label { margin-top: 2.2cqw; padding-bottom: 1.4cqw; font-family: Archivo, sans-serif; font-weight: 500; font-size: 3.6cqw; line-height: 1; letter-spacing: .14em; color: #595959; } @media (prefers-color-scheme: dark) { .ds-hs { color: #ffffff; } .ds-hs-label { color: #9ba4ad; } }"
+    },
+    {
+      "name": "English Label",
+      "kind": "custom",
+      "refersTo": "english-label",
+      "description": "The English translation beneath every Chinese headline: Archivo 500, 36 units, +0.14em, caps written into the string. It is always a translation, never a category tag or kicker.",
+      "html": "<div class=\"ds-label-pair\"><div class=\"ds-label-zh\">正在研究</div><div class=\"ds-label-en\">CURRENTLY STUDYING</div></div>",
+      "css": ".ds-label-pair { container-type: inline-size; width: 100%; color: #111111; } .ds-label-zh { font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 6.4cqw; line-height: 1; letter-spacing: .02em; } .ds-label-en { margin-top: 2.2cqw; font-family: Archivo, sans-serif; font-weight: 500; font-size: 3.6cqw; line-height: 1; letter-spacing: .14em; color: #595959; } @media (prefers-color-scheme: dark) { .ds-label-pair { color: #ffffff; } .ds-label-en { color: #9ba4ad; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Information Is the Design",
+    "overview": "The profile is a Swiss International Typographic poster. It uses only the facts about Jacob Hong as material: name, role, stack, the one project, and how to reach him. They sit on a six-column grid in extreme scale contrast. Size, weight and position carry the hierarchy, along with one field of International Orange that marks `skills` as the thing to act on. Nothing else decorates the page.\n\nGitHub's Markdown renderer strips CSS and JavaScript, so the display type, the section headings and the single moment of motion live in generated SVG images. Their text is outlined to paths, and each image ships in a light and a dark variant. Anything a reader should copy, click or search stays native Markdown in GitHub's own type: prose, commands, tables and links. The images have a transparent ground, so GitHub's white or near-black page shows through.\n\nThe page is sparse: one poster, then four bilingual section headings, each a thick rule, a Chinese headline and its English translation. This world replaced an earlier pixel-RPG profile and rejects that look outright: no game metaphors, badges, stats cards or typing banners.",
+    "keyCharacteristics": [
+      "Six-column grid on a 1000-unit canvas, flush with the README text column.",
+      "Archivo ExtraBold at poster scale against Archivo Medium in spaced caps; Noto Sans TC Bold for Chinese.",
+      "One orange field, reserved for `skills`.",
+      "Thick rules, square corners, no shadows, no ornament.",
+      "Bilingual: every Chinese headline has its English translation beneath it.",
+      "One moment of motion: the field opens once, and then everything is still."
+    ],
+    "rules": [
+      { "name": "The One Field Rule", "body": "International Orange appears on `skills` and nowhere else. The test: if `skills` were deleted, no orange would be left on the page.", "section": "colors" },
+      { "name": "The Fixed Field Ink Rule", "body": "Text set inside the field is always #111111 and never swaps with the theme. The one crossing is the name's display-scale overprint (see Elevation & Depth), a hero device that does not permit any other text in theme ink on orange.", "section": "colors" },
+      { "name": "The Two-Ink Swap Rule", "body": "The light and dark variants of an SVG differ only in ink: Poster Black becomes Paper White and Graphite becomes Slate. The orange, the Field Ink and the geometry are identical in both.", "section": "colors" },
+      { "name": "The Outlined Type Rule", "body": "`build.py` shapes every glyph in every SVG with HarfBuzz and outlines it to paths. An image loaded through `<img>` cannot fetch fonts, so no SVG may contain `<text>` or a font reference.", "section": "typography" },
+      { "name": "The Headline-and-Translation Rule", "body": "Every Chinese headline has its English translation directly beneath it in the Label style. The label is always a translation of the headline, never a category tag or a kicker.", "section": "typography" },
+      { "name": "The 36-Unit Floor Rule", "body": "No SVG text is smaller than 36 units. That renders at about 11.7px in a 326px phone column and about 30px on desktop. Anything that would need to be smaller belongs in Markdown text.", "section": "typography" },
+      { "name": "The Flush Column Rule", "body": "Images are exactly as wide as the text column, and their first ink sits at x=0. There is no inner margin to align anything against except the grid.", "section": "layout" },
+      { "name": "The Shared Baseline Rule", "body": "In the hero, the block at bottom left and the lines in the field share baselines at 596, 658 and 710. A new line on either side takes a baseline from that set.", "section": "layout" },
+      { "name": "The Flat Print Rule", "body": "Surfaces are solid ink or solid orange on the page's own ground. If something needs to stand out, change its size, weight or position, not its elevation.", "section": "elevation" },
+      { "name": "The One Moment Rule", "body": "Only the hero field moves, and only once. Nothing loops, and no other asset animates.", "section": "components" },
+      { "name": "The Copyable Stays Text Rule", "body": "Anything a reader copies, such as install commands, stays in a fenced Markdown code block and is never drawn into an SVG.", "section": "components" }
+    ],
+    "dos": [
+      "Do generate every SVG through `assets/src/build.py`. Add strings to `HERO` or `HEADINGS`, then rebuild both themes together.",
+      "Do start every new SVG element at a column's left edge (0, 170.67, 341.33, 512, 682.67, 853.33), or at a fixed inset from one, as the field text does (512 + 40).",
+      "Do give every new section a heading strip: a 10-unit rule, a Chinese headline, and the English translation in spaced caps beneath it.",
+      "Do keep all ink inside the canvas; no glyph may cross the viewBox edge.",
+      "Do write alt text that carries every word drawn in the image.",
+      "Do keep the ordinal stage numbers in the `skills` table; they are sequence, not metrics."
+    ],
+    "donts": [
+      "Don't use International Orange anywhere but `skills`.",
+      "Don't set text inside the orange field in theme ink; field text is always #111111, and the name's overprint is the only crossing.",
+      "Don't add badges, stats cards, typing banners, or game metaphors (levels, HP bars, quests).",
+      "Don't present invented numbers: no percentages, skill levels, counts or progress bars.",
+      "Don't add ornament: no icons, emoji, gradients, shadows, rounded corners or decorative dividers. The 10-unit rule is the only line the system draws.",
+      "Don't set SVG text smaller than 36 units.",
+      "Don't animate anything but the hero field, and don't make it loop.",
+      "Don't start an HTML block with an inline `<a>` in front of a `<picture>`; put the link inside the `<h2>`.",
+      "Don't paint a background into an SVG; the ground belongs to GitHub."
+    ]
+  }
+}
