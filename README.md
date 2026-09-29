@@ -9,7 +9,7 @@
 
 I work out the flow, the data states and the failure boundaries before I design or write code, and I care that data stays consistent, processes stay reliable, errors stay traceable and deployments stay controlled.
 
-[hungkaojay@gmail.com](mailto:hungkaojay@gmail.com) · [作品集 Portfolio](https://guojie-hong.github.io/PortfolioWeb/)
+[hungkaojay@gmail.com](mailto:hungkaojay@gmail.com) · [個人介紹 About](https://guojie-hong.github.io/)
 
 <br>
 
