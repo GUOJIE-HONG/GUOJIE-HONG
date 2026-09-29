@@ -29,7 +29,7 @@ GitHub 個人頁最上方的自我介紹。讓招募方看懂他是誰、擅長�
 ## Operating Context
 
 - GitHub 帳號 `GUOJIE-HONG`（2026-09 由 `GUOJIE526` 改名，舊網址已 404）。所有連結都要用新帳號。
-- 作品集網站 https://guojie-hong.github.io/PortfolioWeb/ 是給招募方的完整介紹，它有自己的 PRODUCT.md / DESIGN.md（捷運路線圖主題）。
+- 作品集網站 https://guojie-hong.github.io/ 是給招募方的完整介紹，它有自己的 PRODUCT.md / DESIGN.md（捷運路線圖主題）。
 - 語言：推論為「繁體中文說明 + 英文技術名詞」，沿用目前 README 與作品集的寫法；因為有不讀中文的開發者讀者，標題與 `skills` 介紹可用英文。**此為推論，未經本人另行確認。**
 
 ## Capabilities and Constraints
