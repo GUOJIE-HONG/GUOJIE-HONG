@@ -17,57 +17,41 @@ from pathlib import Path
 
 import uharfbuzz as hb
 from fontTools.pens.svgPathPen import SVGPathPen
+from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.transformPen import TransformPen
 from fontTools.ttLib import TTFont
 
 ASSETS = Path(__file__).resolve().parents[1]
 CACHE = Path(__file__).parent / ".cache"
 
-ORANGE = "#ff4f00"
-ON_ORANGE = "#111111"
+GREEN = "#084435"
+YELLOW = "#f8f897"
+CREAM = "#f7f8c9"
 THEMES = {
-    "light": {"ink": "#111111", "sub": "#595959"},
-    "dark": {"ink": "#ffffff", "sub": "#9ba4ad"},
+    "light": {"ground": GREEN},
+    "dark": {"ground": GREEN},
 }
 
-# Six-column grid on a 1000-unit canvas, flush with the README's text column.
+# A compact masthead; the six numbered stages express sequence, not metrics.
 W = 1000
-GUTTER = 24
-COL = (W - 5 * GUTTER) / 6
-
-
-def col(i):
-    """Left edge of column i (0-based)."""
-    return i * (COL + GUTTER)
-
-
-# The English line under every Chinese headline: spaced caps, one treatment.
-LABEL_SIZE = 36
-LABEL_TRACKING = 0.14
 
 FACES = {
-    "display": ("Archivo", 800),
-    "text": ("Archivo", 500),
+    "display": ("Barlow Condensed", 800),
+    "text": ("Barlow Condensed", 600),
     "zh": ("Noto Sans TC", 700),
 }
 
 HERO = {
-    "name": ("Jacob", "Hong"),
+    "name": "JACOB HONG",
     "role_zh": "後端工程師",
     "role_en": "BACKEND ENGINEER",
     "stack": "C# / ASP.NET Core",
-    "product": "skills",
-    "rule": ("Evidence,", "never guesswork."),
     "alt": "Jacob Hong. 後端工程師, backend engineer, C# / ASP.NET Core. "
-    "skills: evidence, never guesswork.",
+    "Skills workflow: 01 Find direction, 02 Interview, 03 Choose, "
+    "04 Implement, 05 Refactor, 06 Hand off.",
 }
 
-HEADINGS = {
-    "skills": ("開發流程工具", "SKILLS FOR CODING AGENTS", True),
-    "stack": ("技術", "STACK", False),
-    "studying": ("正在研究", "CURRENTLY STUDYING", False),
-    "contact": ("聯絡", "CONTACT", False),
-}
+STAGES = ("Find direction", "Interview", "Choose", "Implement", "Refactor", "Hand off")
 
 
 def fetch_face(family, weight, text):
@@ -118,15 +102,12 @@ class Face:
             self.glyphs[name].draw(TransformPen(pen, (s, 0, 0, -s, x + gx, y - gy)))
         return pen.getCommands()
 
-    def cap(self, size):
-        return self.tt["OS/2"].sCapHeight * size / self.upem
-
-    def top(self, text, size):
-        """Height of the tallest ink in `text` above the baseline."""
-        glyf = self.tt["glyf"]
-        names = [name for name, _, _ in self.shape(text, size, 0)]
-        return max(glyf[n].yMax for n in names) * size / self.upem
-
+    def width(self, text, size):
+        pen = BoundsPen(self.glyphs)
+        scale = size / self.upem
+        for name, x, y in self.shape(text, size, 0):
+            self.glyphs[name].draw(TransformPen(pen, (scale, 0, 0, scale, x, y)))
+        return pen.bounds[2] - pen.bounds[0]
 
 def svg(width, height, title, body, style=""):
     style = f"<style>{style}</style>" if style else ""
@@ -142,80 +123,58 @@ def p(d, fill, cls=""):
     return f'<path{cls} fill="{fill}" d="{d}"/>'
 
 
-# The field opens once from a column-wide rule; it is never invisible, so a
-# renderer that skips or freezes the animation still shows the composition.
-MOTION = (
-    ".field{transform-box:fill-box;transform-origin:0 0;"
-    "animation:open 1.2s cubic-bezier(.16,1,.3,1) both}"
-    "@keyframes open{from{transform:scaleX(.06)}}"
-    "@media (prefers-reduced-motion:reduce){.field{animation:none}}"
-)
-
-
-def hero(f, theme):
-    ink, sub = theme["ink"], theme["sub"]
-    name_size = 262
-    lead = name_size * 0.84
-    y_jacob = round(f["display"].top(HERO["name"][0], name_size)) + 4
-    y_hong = round(y_jacob + lead)
-    field_top = y_jacob + 44
-    height = 760
-
-    # Inside the orange field: columns 4-6.
-    fx = col(3) + 40
-    y_product = 596
-    product_size = 124
-    rule_size = 44
-    y_rule = (y_product + 62, y_product + 62 + 52)
-
-    # Bottom left: columns 1-3, baselines shared with the field's lines.
-    zh_size = 76
-
+def hero(f, theme, mobile=False):
+    width, top, row_height = (600, 180, 72) if mobile else (W, 90, 46)
+    columns = 3 if mobile else 6
+    height = top + row_height * (2 if mobile else 1)
+    cell = width / columns
     body = [
-        f'<rect class="field" x="{col(3):.1f}" y="{field_top}" '
-        f'width="{W - col(3):.1f}" height="{height - field_top}" fill="{ORANGE}"/>',
-        p(f["display"].path(HERO["name"][0], 0, y_jacob, name_size, -0.035), ink),
-        p(f["display"].path(HERO["name"][1], 0, y_hong, name_size, -0.035), ink),
-        p(f["zh"].path(HERO["role_zh"], 0, y_product, zh_size, 0.02), ink),
-        p(f["text"].path(HERO["role_en"], 0, y_rule[0], LABEL_SIZE, LABEL_TRACKING), sub),
-        p(f["text"].path(HERO["stack"], 0, y_rule[1], rule_size), sub),
-        p(f["display"].path(HERO["product"], fx, y_product, product_size, -0.02), ON_ORANGE),
-        p(f["text"].path(HERO["rule"][0], fx, y_rule[0], rule_size), ON_ORANGE),
-        p(f["text"].path(HERO["rule"][1], fx, y_rule[1], rule_size), ON_ORANGE),
+        f'<rect width="{width}" height="{top}" fill="{theme["ground"]}"/>',
+        f'<rect y="{top}" width="{width}" height="{height - top}" fill="{YELLOW}"/>',
     ]
-    return svg(W, height, HERO["alt"], "".join(body), MOTION)
 
+    def text(face, value, x, baseline, size, max_width, color):
+        # Fit actual glyph bounds, so a font update cannot clip the masthead.
+        size = min(size, size * max_width / f[face].width(value, size))
+        body.append(p(f[face].path(value, x, baseline, size), color))
 
-def heading(f, theme, zh, en, accent):
-    ink, sub = theme["ink"], theme["sub"]
-    rule = ORANGE if accent else ink
-    zh_size = 64
-    y_zh = 10 + 30 + round(zh_size * 0.88)
-    y_en = y_zh + 22 + round(f["text"].cap(LABEL_SIZE))
-    height = y_en + 14
-    body = (
-        f'<rect width="{W}" height="10" fill="{rule}"/>'
-        + p(f["zh"].path(zh, 0, y_zh, zh_size, 0.02), ink)
-        + p(f["text"].path(en, 0, y_en, LABEL_SIZE, LABEL_TRACKING), sub)
-    )
-    return svg(W, height, f"{zh} {en.capitalize()}", body)
+    if mobile:
+        text("display", HERO["name"], 24, 111, 124, 552, YELLOW)
+        text("zh", HERO["role_zh"], 24, 157, 30, 204, CREAM)
+        text("text", HERO["stack"], 265, 157, 35, 311, CREAM)
+    else:
+        text("display", HERO["name"], 24, 81, 110, 506, YELLOW)
+        body.append(f'<rect x="553" y="12" width="2" height="68" fill="{CREAM}"/>')
+        text("zh", HERO["role_zh"], 579, 40, 31, 397, CREAM)
+        text("text", HERO["stack"], 579, 80, 39, 397, CREAM)
+
+    for i, label in enumerate(STAGES):
+        column, row = i % columns, i // columns
+        x, y = column * cell, top + row * row_height
+        baseline = y + (43 if mobile else 32)
+        text("text", f"{i + 1:02}", x + 16, baseline, 25 if mobile else 22, 24, GREEN)
+        text("text", label, x + 48, baseline, 28 if mobile else 25, cell - 63, GREEN)
+        if column < columns - 1:
+            edge = x + cell - 6
+            body.append(
+                f'<path d="M{edge - 7} {y + 10}L{edge + 5} {y + row_height / 2}'
+                f'L{edge - 7} {y + row_height - 10}" fill="none" stroke="{GREEN}" stroke-width="2"/>'
+            )
+    if mobile:
+        body.append(f'<path d="M16 {top + row_height}H584" stroke="{GREEN}" stroke-width="1"/>')
+    return svg(width, height, HERO["alt"], "".join(body))
 
 
 def main():
     texts = {"display": "", "text": "", "zh": ""}
-    texts["display"] += "".join(HERO["name"]) + HERO["product"]
-    texts["text"] += HERO["role_en"] + HERO["stack"] + "".join(HERO["rule"])
+    texts["display"] += HERO["name"]
+    texts["text"] += HERO["stack"] + "0123456" + "".join(STAGES)
     texts["zh"] += HERO["role_zh"]
-    for zh, en, _ in HEADINGS.values():
-        texts["zh"] += zh
-        texts["text"] += en
     faces = {k: fetch_face(*FACES[k], texts[k]) for k in FACES}
 
     for mode, theme in THEMES.items():
         (ASSETS / f"hero-{mode}.svg").write_text(hero(faces, theme), encoding="utf-8")
-        for slug, (zh, en, accent) in HEADINGS.items():
-            out = ASSETS / f"heading-{slug}-{mode}.svg"
-            out.write_text(heading(faces, theme, zh, en, accent), encoding="utf-8")
+        (ASSETS / f"hero-mobile-{mode}.svg").write_text(hero(faces, theme, mobile=True), encoding="utf-8")
     print("built", sorted(x.name for x in ASSETS.glob("*.svg")))
 
 

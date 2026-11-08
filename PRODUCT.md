@@ -43,7 +43,8 @@ GitHub 個人頁最上方的自我介紹。讓招募方看懂他是誰、擅長�
 - 給 Claude Code、Codex 等 agent 用的 skill 套件，涵蓋「寫程式之前」到「開始實作」的階段：找方向、訪談、選實作方向、依設計實作、小改動與重構、交接給新 session。
 - 建立在 Matt Pocock 的 skills 之上，延伸而不取代。
 - 安裝：`/plugin marketplace add GUOJIE-HONG/skills` 再 `/plugin install guojie-skills@guojie-hong`；或 `npx skills@latest add GUOJIE-HONG/skills`。
-- 現有 skill：`dont-know-how`、`torture-gently`、`grill-softly`、`show-grill-clearly`、`design-code-implement`、`impl`、`implement-all`、`implement-small-change`、`refactor`、`ptns`。MIT 授權。
+- README 保留展示的 skill：`dont-know-how`、`torture-gently`、`grill-softly`、`show-grill-clearly`、`implement-small-change`、`refactor`、`ptns`。MIT 授權。此為既有清單移除下列已確認棄用項目後的紀錄，不代表其餘項目已重新查核。
+- 本人本次明確確認 `design-code-implement`、`impl`、`implement-all` 已棄用，不可再列為現用 skill 或加入 README。上方六階段圖示是開發流程示意，不代表每個階段都有對應的現用 skill。
 
 **不公開的資訊（硬限制，沿用作品集紀錄）**
 - 手機號碼、居住地址、個人社群帳號、未列入最新履歷的舊學歷，一律不可出現。
